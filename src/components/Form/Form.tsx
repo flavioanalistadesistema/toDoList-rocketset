@@ -1,6 +1,7 @@
 import styles from './Form.module.css'
 
 import { PlusCircle } from 'phosphor-react'
+import { Table } from '../Table/Table'
 
 export function Form() {
     return (
@@ -11,7 +12,6 @@ export function Form() {
                     placeholder="Adicione uma nova tarefa"
                 />
                 <footer>
-
                     <button type="submit">Criar 
                         <PlusCircle size={15} weight="bold"/>
                     </button>

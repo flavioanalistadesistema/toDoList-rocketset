@@ -3,6 +3,7 @@ import "./global.css"
 
 import { Header } from './components/header/Header'
 import { Form } from './components/Form/Form'
+import { Table } from './components/Table/Table'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <div>
         <Form />
+        <Table />
       </div>
 
     </div>
