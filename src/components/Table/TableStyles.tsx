@@ -1,4 +1,10 @@
-.table {
+import styled from "styled-components";
+
+interface ListProsp {
+    checkbox: boolean;
+}
+
+export const List = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -10,7 +16,6 @@
     height: 287px;
     left: calc(50% - 800px/2);
     top: 18.1875rem;
-}
 
 .table-line {
     padding: 20px 24px;
@@ -73,6 +78,8 @@
 
 .table-icon {
     padding-bottom: .625rem;
+}
+
 }
 
 .table-button-delete {
@@ -188,6 +195,11 @@
     background-color: #5E60CE;
 }
 
+.table-checkbox p {
+    text-decoration: ${props => props.checkbox ? "line-through" : ""};
+    color: ${props => props.checkbox ? "#808080" : ""};
+}
+
 .checkmark:after {
     content: "";
     position: absolute;
@@ -209,3 +221,4 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+`
