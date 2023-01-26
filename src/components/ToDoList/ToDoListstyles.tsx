@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
-interface ToDoListProps {
-    checkbox: boolean;
-}
 
-export const ListBody = styled.div<ToDoListProps>`
+export const ListBody = styled.div`
     width: 100%;
     height: 72px;
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: center;
+    position: relative;
     
     & p {
         padding-left: 10px;
@@ -82,9 +80,9 @@ export const ListBody = styled.div<ToDoListProps>`
     background-color: #5E60CE;
 }
 
-.table-checkbox p {
-    text-decoration: ${props => props.checkbox ? "line-through" : ""};
-    color: ${props => props.checkbox ? "#808080" : ""};
+.check-box-description {
+    text-decoration: line-through;
+    color: #808080;
 }
 
 .checkmark:after {
