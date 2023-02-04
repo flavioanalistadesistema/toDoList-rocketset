@@ -22,9 +22,9 @@ export function Table() {
       description: "Testando a lista de tarefas 3"
     },
     {
-      id: 3,
-      name: 'teste3',
-      description: "Testando a lista de tarefas 3"
+      id: 4,
+      name: 'teste4',
+      description: "Testando a lista de tarefas 4"
     }
   ])
 

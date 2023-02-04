@@ -14,14 +14,17 @@ export function ToDoList(props: ToDoListProps) {
         const { name } = event.currentTarget // Vamos pegar aquele name exclusivo.
 
         setCheckedElements(prevValue => {
-            console.log("prevValue", prevValue.includes(name));
-
           if(prevValue.includes(name)) {
-            return prevValue.filter(item => {console.log('filter', item !== name)})
+            return prevValue.filter(item => {
+                if(item !== name) {
+                    return [...prevValue, name]
+                }
+            })
           }
           return [...prevValue, name]
         })
       }, [])
+
     return (
         <ListBody>
             {props.ListTask.map((item, index) => {
@@ -43,7 +46,7 @@ export function ToDoList(props: ToDoListProps) {
                             <p className={checkedElements.includes(item.name) ? 'check-box-description' : ''}>{item.description}</p>
                         </div>
                         <div className='table-button-delete'>
-                            <Trash weight="bold" />
+                                <Trash weight="bold" />
                         </div>
                     </div>
                 )
