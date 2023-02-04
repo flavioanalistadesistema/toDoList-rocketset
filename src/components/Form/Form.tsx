@@ -2,21 +2,52 @@ import styles from './Form.module.css'
 
 import { PlusCircle } from 'phosphor-react'
 import { Table } from '../Table/Table'
+import { useState } from 'react'
+
+interface listContentProps {
+    name: string
+    description: string
+}
 
 export function Form() {
+    const [listContent, setListContent] = useState<listContentProps[]>([])
+
+    const [newContent, setNewContent] = useState('')
+
+    const handleNewContentchange = (e: any) => {
+        const newContet = e.target.value
+        setNewContent(newContet)
+    }
+
+    function handleCreateNewContent(e: any) {
+        e.preventDefault()
+        const newContentList = {
+            name: `content${listContent.length + 1}`,
+            description: newContent
+        }
+        setListContent([
+            ...listContent,
+            newContentList
+        ])
+        setNewContent('')
+    }
+
     return (
         <div>
-            <form className={styles.form}>
+            <form onSubmit={handleCreateNewContent} className={styles.form}>
                 <input
                     name='content'
                     placeholder="Adicione uma nova tarefa"
+                    value={newContent}
+                    onChange={handleNewContentchange}
                 />
                 <footer>
-                    <button type="submit">Criar 
-                        <PlusCircle size={15} weight="bold"/>
+                    <button type="submit">Criar
+                        <PlusCircle size={15} weight="bold" />
                     </button>
                 </footer>
             </form>
+            <Table listContent={listContent} />
         </div>
     )
 }

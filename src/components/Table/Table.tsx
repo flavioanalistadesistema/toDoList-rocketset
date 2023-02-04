@@ -4,29 +4,7 @@ import { ClipboardText, Trash } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { ToDoList } from '../ToDoList/ToDoList';
 
-export function Table() {
-  const [listTask, setListtask] = useState([
-    {
-      id: 1,
-      name: 'teste1',
-      description: "Testando a lista de tarefas 1"
-    },
-    {
-      id: 2,
-      name: 'teste2',
-      description: "Testando a lista de tarefas 2"
-    },
-    {
-      id: 3,
-      name: 'teste3',
-      description: "Testando a lista de tarefas 3"
-    },
-    {
-      id: 4,
-      name: 'teste4',
-      description: "Testando a lista de tarefas 4"
-    }
-  ])
+export function Table({listContent}) {
 
   return (
     <List>
@@ -45,9 +23,9 @@ export function Table() {
         </span>
       </div>
       <div className='table-line' />
-      <ToDoList ListTask={listTask} />
+      <ToDoList ListTask={listContent} />
       {
-        listTask.length === 0 ?
+        listContent.length === 0 ?
           <div className='table-text'>
             <div className='table-icon'>
               <ClipboardText size={56} weight="thin" />

@@ -13,7 +13,6 @@ function App() {
       <Header />
       <div>
         <Form />
-        <Table />
       </div>
 
     </div>
