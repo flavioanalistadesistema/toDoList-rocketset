@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const ListBody = styled.div`
+export const ListBodyStyle = styled.div`
     width: 100%;
     height: 72px;
     display: flex;
@@ -9,6 +9,8 @@ export const ListBody = styled.div`
     justify-content: left;
     align-items: center;
     position: relative;
+    top: 1.25rem;
+    margin-bottom: -.3125rem;
     
     & p {
         padding-left: 10px;
