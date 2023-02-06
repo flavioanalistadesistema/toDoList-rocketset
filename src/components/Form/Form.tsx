@@ -25,11 +25,16 @@ export function Form() {
             name: `content${listContent.length + 1}`,
             description: newContent
         }
+        console.log("newContentList", newContentList)
         setListContent([
             ...listContent,
             newContentList
         ])
         setNewContent('')
+    }
+
+    function deleteContentForm (contents) {
+        setListContent(listContent.filter((content) => content.name !== contents))
     }
 
     return (
@@ -47,7 +52,7 @@ export function Form() {
                     </button>
                 </footer>
             </form>
-            <Table listContent={listContent} />
+            <Table listContent={listContent} onDeleteContentForm={deleteContentForm}/>
         </div>
     )
 }

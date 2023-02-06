@@ -1,10 +1,14 @@
 import { List } from './TableStyles';
 
-import { ClipboardText, Trash } from 'phosphor-react';
+import { ClipboardText } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { ToDoList } from '../ToDoList/ToDoList';
 
-export function Table({listContent}) {
+export function Table({ listContent, onDeleteContentForm }) {
+
+  function deleteContentTable(e) {
+    onDeleteContentForm(e)
+  }
 
   return (
     <List>
@@ -22,8 +26,11 @@ export function Table({listContent}) {
           </div>
         </span>
       </div>
-      <div className='table-line' />
-      <ToDoList ListTask={listContent} />
+      {listContent.length === 0 ? <div className='table-line' /> : ''}
+
+      {listContent.map(item => {
+        return <ToDoList ListTask={item} onDeleteContentTable={deleteContentTable} />
+      })}
       {
         listContent.length === 0 ?
           <div className='table-text'>
