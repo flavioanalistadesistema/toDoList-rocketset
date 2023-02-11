@@ -1,4 +1,4 @@
-import { List } from './TableStyles';
+import { Liststyle } from './TableStyles';
 
 import { ClipboardText } from 'phosphor-react';
 import { useEffect, useState } from 'react';
@@ -24,7 +24,7 @@ export function Table({ listContent, onDeleteContentForm, updateState }) {
   }, [listContent])
 
   return (
-    <List>
+    <Liststyle>
       <div className="title">
         <span className='title-left'>
           Tarefas Criadas
@@ -56,6 +56,6 @@ export function Table({ listContent, onDeleteContentForm, updateState }) {
           ''
       }
 
-    </List>
+    </Liststyle>
   )
 }

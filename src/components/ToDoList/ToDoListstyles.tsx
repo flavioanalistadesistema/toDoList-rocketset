@@ -3,14 +3,12 @@ import styled from 'styled-components';
 
 export const ListBodyStyle = styled.div`
     width: 100%;
-    height: 72px;
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: center;
     position: relative;
     top: 1.25rem;
-    margin-bottom: -.3125rem;
     
     & p {
         padding-left: 10px;

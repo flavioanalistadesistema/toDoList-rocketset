@@ -25,7 +25,7 @@ export function Form() {
             if (item.name === updatedContent.name) {
                 return {
                     ...item,
-                    checked: !item.checked
+                    checked: !updatedContent.checked
                 }
             }
             return item
@@ -39,15 +39,17 @@ export function Form() {
     }
     function handleCreateNewContent(e: any) {
         e.preventDefault()
-        const newContentList = {
-            name: `content${listContent.length + 1}`,
-            description: newContent,
-            checked: false
+        if(newContent.length > 0) {
+            const newContentList = {
+                name: `content${listContent.length + 1}`,
+                description: newContent,
+                checked: false
+            }
+            setListContent([
+                ...listContent,
+                newContentList
+            ])
         }
-        setListContent([
-            ...listContent,
-            newContentList
-        ])
         setNewContent('')
     }
 

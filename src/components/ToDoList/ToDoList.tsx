@@ -15,33 +15,18 @@ interface ListContentProps {
 
 export function ToDoList(props: ToDoListProps) {
 
-    // const [checkedElements, setCheckedElements] = useState('')
-    // const [countChecked, setCountChecked] = useState<boolean>()
-
-    const onCheck = useCallback((event) => {
-        const { name } = event.currentTarget // Vamos pegar aquele name exclusivo.
-        props.updateState(props.ListTask)
-
-        // setCheckedElements(prevValue => {
-        //     if (prevValue.includes(name)) {
-        //         return prevValue.filter(item => {
-        //             if (item !== name) {
-        //                 return [...prevValue, name]
-        //             }
-        //         })
-        //     }
-        //     return [...prevValue, name]
-        // })
-    }, [])
+    const onCheck = () => {
+        const checkContent = {
+            checked: props.ListTask.checked,
+            description: props.ListTask.description,
+            name: props.ListTask.name
+        }
+        props.updateState(checkContent)
+    }
 
     const handleDeleteContent = () => {
         props.onDeleteContentTable(props.ListTask)
     }
-
-    // useEffect(() => {
-    //     setCountChecked(checkedElements.includes(props.ListTask.name))
-    //     props.isChecked(countChecked)
-    // }, [checkedElements])
 
     return (
         <ListBodyStyle>
@@ -55,11 +40,11 @@ export function ToDoList(props: ToDoListProps) {
                             name={props.ListTask.name}
                             value="checkbox"
                             checked={props.ListTask.checked}
-                            onClick={onCheck}
+                            onChange={onCheck}
                         />
                         <span className='checkmark'></span>
                     </label>
-                    <p className={ props.ListTask.checked ? 'check-box-description' : ''}>{props.ListTask.description}</p>
+                    <p className={props.ListTask.checked ? 'check-box-description' : ''}>{props.ListTask.description}</p>
                 </div>
                 <div className='table-button-delete' onClick={handleDeleteContent}>
                     <Trash weight="bold" />
