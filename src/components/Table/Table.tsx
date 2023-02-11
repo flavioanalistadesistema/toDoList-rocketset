@@ -52,6 +52,7 @@ export function Table({ listContent, onDeleteContentForm, updateState }) {
             </div>
             <strong>Você ainda não tem tarefas cadastradas</strong>
             <p>Crie tarefas e organize seus itens a fazer</p>
+            <span>Link repsitorio: <a href="https://github.com/flavioanalistadesistema/toDoList-rocketset/tree/main">Clique aqui</a></span>
           </div> :
           ''
       }
