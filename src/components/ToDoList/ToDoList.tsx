@@ -3,9 +3,9 @@ import { useCallback, useEffect, useState } from "react";
 import { ListBodyStyle } from "./ToDoListstyles";
 
 interface ToDoListProps {
-    ListTask: ListContentProps[],
+    ListTask: ListContentProps,
     onDeleteContentTable: (object) => void
-    updateState: () => void
+    updateState: (checkContent) => void
 }
 interface ListContentProps {
     name: string
@@ -16,12 +16,14 @@ interface ListContentProps {
 export function ToDoList(props: ToDoListProps) {
 
     const onCheck = () => {
-        const checkContent = {
-            checked: props.ListTask.checked,
-            description: props.ListTask.description,
-            name: props.ListTask.name
+        if (props.ListTask !== undefined) {
+            const checkContent = {
+                checked: props.ListTask.checked,
+                description: props.ListTask.description,
+                name: props.ListTask.name
+            }
+            props.updateState(checkContent)
         }
-        props.updateState(checkContent)
     }
 
     const handleDeleteContent = () => {

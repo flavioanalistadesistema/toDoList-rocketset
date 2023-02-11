@@ -12,7 +12,7 @@ interface listContentProps {
 interface ContentProps {
     name: string
     description: string
-    checked: boolean
+    checked?: boolean
 }
 
 export function Form() {
@@ -21,16 +21,18 @@ export function Form() {
     const [updatedContent, setUpdatedContent] = useState<ContentProps>()
 
     useEffect(() => {
-        const newContent = listContent.map((item) => {
-            if (item.name === updatedContent.name) {
-                return {
-                    ...item,
-                    checked: !updatedContent.checked
+        if (updatedContent !== undefined) {
+            const newContent = listContent.map((item) => {
+                if (item.name.includes(updatedContent.name)) {
+                    return {
+                        ...item,
+                        checked: !updatedContent.checked
+                    }
                 }
-            }
-            return item
-        })
-        setListContent(newContent)
+                return item
+            })
+            setListContent(newContent)
+        }
     }, [updatedContent])
 
     const handleNewContentchange = (e: any) => {
@@ -39,7 +41,7 @@ export function Form() {
     }
     function handleCreateNewContent(e: any) {
         e.preventDefault()
-        if(newContent.length > 0) {
+        if (newContent.length > 0) {
             const newContentList = {
                 name: `content${listContent.length + 1}`,
                 description: newContent,
@@ -53,7 +55,7 @@ export function Form() {
         setNewContent('')
     }
 
-    function deleteContentForm (contents) {
+    function deleteContentForm(contents) {
         setListContent(listContent.filter((content) => content.name !== contents))
     }
 
