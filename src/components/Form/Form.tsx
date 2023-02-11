@@ -2,7 +2,7 @@ import styles from './Form.module.css'
 
 import { PlusCircle } from 'phosphor-react'
 import { Table } from '../Table/Table'
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 interface listContentProps {
     name: string

@@ -1,5 +1,4 @@
 import { Trash } from "phosphor-react";
-import { useCallback, useEffect, useState } from "react";
 import { ListBodyStyle } from "./ToDoListstyles";
 
 interface ToDoListProps {
