@@ -1,56 +1,55 @@
 import { Trash } from "phosphor-react";
-import { useCallback, useState } from "react";
-import { ListBody } from "./ToDoListstyles";
+import { useCallback, useEffect, useState } from "react";
+import { ListBodyStyle } from "./ToDoListstyles";
 
 interface ToDoListProps {
-    ListTask: object[]
+    ListTask: ListContentProps[],
+    onDeleteContentTable: (object) => void
+    updateState: () => void
+}
+interface ListContentProps {
+    name: string
+    description: string
+    checked: boolean
 }
 
 export function ToDoList(props: ToDoListProps) {
 
-    const [checkedElements, setCheckedElements] = useState([])
+    const onCheck = () => {
+        const checkContent = {
+            checked: props.ListTask.checked,
+            description: props.ListTask.description,
+            name: props.ListTask.name
+        }
+        props.updateState(checkContent)
+    }
 
-    const onCheck = useCallback((event) => {
-        const { name } = event.currentTarget // Vamos pegar aquele name exclusivo.
-
-        setCheckedElements(prevValue => {
-          if(prevValue.includes(name)) {
-            return prevValue.filter(item => {
-                if(item !== name) {
-                    return [...prevValue, name]
-                }
-            })
-          }
-          return [...prevValue, name]
-        })
-      }, [])
+    const handleDeleteContent = () => {
+        props.onDeleteContentTable(props.ListTask)
+    }
 
     return (
-        <ListBody>
-            {props.ListTask.map((item, index) => {
-                return (
-                    <div className='table-card' key={index}>
-                        <div className='table-checkbox'>
-                            <span className='checkmark' ></span>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    id={`card_checkbox-${index}`}
-                                    name={item.name}
-                                    value="checkbox"
-                                    checked={checkedElements.includes(item.name)}
-                                    onChange={onCheck}
-                                />
-                                <span className='checkmark'></span>
-                            </label>
-                            <p className={checkedElements.includes(item.name) ? 'check-box-description' : ''}>{item.description}</p>
-                        </div>
-                        <div className='table-button-delete'>
-                                <Trash weight="bold" />
-                        </div>
-                    </div>
-                )
-            })}
-        </ListBody>
+        <ListBodyStyle>
+            <div className='table-card' key={props.ListTask.name}>
+                <div className='table-checkbox'>
+                    <span className='checkmark' ></span>
+                    <label>
+                        <input
+                            type="checkbox"
+                            id={`card_checkbox-${props.ListTask.name}`}
+                            name={props.ListTask.name}
+                            value="checkbox"
+                            checked={props.ListTask.checked}
+                            onChange={onCheck}
+                        />
+                        <span className='checkmark'></span>
+                    </label>
+                    <p className={props.ListTask.checked ? 'check-box-description' : ''}>{props.ListTask.description}</p>
+                </div>
+                <div className='table-button-delete' onClick={handleDeleteContent}>
+                    <Trash weight="bold" />
+                </div>
+            </div>
+        </ListBodyStyle>
     )
 }

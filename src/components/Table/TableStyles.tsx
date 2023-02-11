@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
-export const List = styled.div`
+export const Liststyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0rem;
-    gap: 24px;
+    padding: 0px;
 
     position: absolute;
-    width: 836px;
-    height: 287px;
-    left: calc(50% - 800px/2);
-    top: 18.1875rem;
+    width: 52.25rem;
+    height: 17.9375rem;
+    left: calc(50% - 50rem/2);
+    top: 291px;
 
 .table-line {
-    border-top: .0625rem solid #333333;
+    border-top: 1px solid #333333;
     border-radius: .5rem;
     align-self: stretch;
 }
@@ -26,8 +25,8 @@ export const List = styled.div`
     justify-content: center;
     font-family: 'Inter';
     font-style: normal;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     text-align: center;
     order: 1;
     align-self: stretch;
@@ -44,7 +43,7 @@ export const List = styled.div`
     justify-content: space-between;
     align-items: flex-end;
     padding: 0rem;
-    gap: 530px;
+    gap: 33.125rem;
     flex: none;
     order: 0;
     align-self: stretch;
@@ -77,15 +76,15 @@ export const List = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2px 8px;
-    margin-left: 10px;
-    gap: 10px;
+    padding: .125rem .5rem;
+    margin-left: .625rem;
+    gap: .625rem;
     color: #D9D9D9;
 
-    width: 25px;
-    height: 19px;
+    width: 1.5625rem;
+    height: 1.1875rem;
     background: #333333;
-    border-radius: 999px;
+    border-radius: 62.4375rem;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -95,8 +94,8 @@ export const List = styled.div`
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: .75rem;
+    line-height: .9375rem;
     color: #D9D9D9;
 
 }
