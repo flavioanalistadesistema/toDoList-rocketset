@@ -4,11 +4,24 @@ import { ClipboardText } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { ToDoList } from '../ToDoList/ToDoList';
 
-export function Table({ listContent, onDeleteContentForm }) {
+export function Table({ listContent, onDeleteContentForm, updateState }) {
+  const [contentChecked, setContentChecked] = useState<number>(0)
+  const [deleteContent, setDeleteContent] = useState<boolean>()
+  const [countChecked, setCountChecked] = useState<number>(0)
 
-  function deleteContentTable(e) {
-    onDeleteContentForm(e)
+  function deleteContentTable(content) {
+    setDeleteContent(content.checked)
+    deleteContent ? setContentChecked(contentChecked - 1) : ''
+    onDeleteContentForm(content.name)
   }
+
+  useEffect(() => {
+    var counter = 0;
+    for (const obj of listContent) {
+      if (obj.checked) counter++;
+    }
+    setCountChecked(counter)
+  }, [listContent])
 
   return (
     <List>
@@ -16,20 +29,20 @@ export function Table({ listContent, onDeleteContentForm }) {
         <span className='title-left'>
           Tarefas Criadas
           <div className='title-cicle'>
-            <span>0</span>
+            <span>{listContent.length}</span>
           </div>
         </span>
         <span className='title-right'>
           Concluidas
           <div className='title-cicle'>
-            <span>0</span>
+            <span>{`${countChecked}/${listContent.length}`}</span>
           </div>
         </span>
       </div>
       {listContent.length === 0 ? <div className='table-line' /> : ''}
 
       {listContent.map(item => {
-        return <ToDoList ListTask={item} onDeleteContentTable={deleteContentTable} />
+        return <ToDoList key={item.name} updateState={updateState} ListTask={item} onDeleteContentTable={deleteContentTable} />
       })}
       {
         listContent.length === 0 ?
