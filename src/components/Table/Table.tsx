@@ -46,13 +46,16 @@ export function Table({ listContent, onDeleteContentForm, updateState }) {
       })}
       {
         listContent.length === 0 ?
-          <div className='table-text'>
-            <div className='table-icon'>
+          <div className='body'>
+            <div className='icon'>
               <ClipboardText size={56} weight="thin" />
             </div>
-            <strong>Você ainda não tem tarefas cadastradas</strong>
-            <p>Crie tarefas e organize seus itens a fazer</p>
+            <div className='text'>
+              <strong>Você ainda não tem tarefas cadastradas</strong>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
             <span>Link repsitorio: <a href="https://github.com/flavioanalistadesistema/toDoList-rocketset/tree/main">Clique aqui</a></span>
+
           </div> :
           ''
       }

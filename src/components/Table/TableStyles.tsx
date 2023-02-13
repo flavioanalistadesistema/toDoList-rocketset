@@ -18,25 +18,6 @@ export const Liststyle = styled.div`
     align-self: stretch;
 }
 
-.table-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter';
-    font-style: normal;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    text-align: center;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-}
-
-.table-icon {
-    padding-bottom: .625rem;
-}
-
 .title {
     display: flex;
     flex-direction: row;
@@ -99,4 +80,26 @@ export const Liststyle = styled.div`
     color: #D9D9D9;
 
 }
+
+.body {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    .text{
+        font-family: 'Inter';
+        font-style: normal;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+    }
+
+    .icon {
+        padding-top: 2.65rem;
+        padding-bottom: .625rem;
+    }
+}
+
 `
