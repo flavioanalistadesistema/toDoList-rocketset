@@ -1,15 +1,10 @@
 import "./global.css"
-import { Route, Routes  ,BrowserRouter as Router } from "react-router-dom"
-import ToDoListContent from "./page/ToDoListContent";
+import Router from "./router"
 
 function App() {
   return (
     <div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<ToDoListContent />} />
-        </Routes>
-      </Router>
+      <Router />
     </div>
   )
 }
