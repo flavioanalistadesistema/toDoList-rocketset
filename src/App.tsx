@@ -1,21 +1,16 @@
-import styles from './App.module.css'
 import "./global.css"
-
-import { Header } from './components/header/Header'
-import { Form } from './components/Form/Form'
-
+import { Route, Routes  ,BrowserRouter as Router } from "react-router-dom"
+import ToDoListContent from "./page/ToDoListContent";
 
 function App() {
-
   return (
     <div>
-      <Header />
-      <div>
-        <Form />
-      </div>
-
+      <Router>
+        <Routes>
+          <Route path="/" element={<ToDoListContent />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
-
 export default App
